@@ -17,7 +17,7 @@ class СoffeeApp(QMainWindow, Ui_MainWindow):
 
     def run(self):
         self.tableWidget.clear()
-        con = sqlite3.connect('coffee.sqlite')
+        con = sqlite3.connect('data/coffee.sqlite')
         cur = con.cursor()
         query = """SELECT
             *
@@ -38,7 +38,7 @@ class СoffeeApp(QMainWindow, Ui_MainWindow):
 
     def edit(self):
         id = self.tableWidget.item(self.tableWidget.currentRow(), 0).text()
-        con = sqlite3.connect('coffee.sqlite')
+        con = sqlite3.connect('data/coffee.sqlite')
         cur = con.cursor()
         query = """SELECT
                     *
@@ -50,8 +50,6 @@ class СoffeeApp(QMainWindow, Ui_MainWindow):
         self.add_form = AddEditCoffeForm(self, id=id, name=result[1], roast=result[2], molot=result[3], descr=result[4],
                                          price=result[5], v=result[6])
         self.add_form.show()
-        # self.red_form = AddEditCoffeForm(self)
-        # self.red_form.show()
 
 
 def except_hook(cls, exeption, traceback):

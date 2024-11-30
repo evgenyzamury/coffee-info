@@ -19,7 +19,7 @@ class AddEditCoffeForm(QMainWindow, Ui_MainWindow):
 
     def save(self):
         try:
-            con = sqlite3.connect('coffee.sqlite')
+            con = sqlite3.connect('data/coffee.sqlite')
             cur = con.cursor()
             if self.id:
                 query = """UPDATE coffee SET name=?, roast=?, molat_zern=?, descr=?, price=?, v=? WHERE id=?"""
